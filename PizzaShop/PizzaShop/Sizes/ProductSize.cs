@@ -4,21 +4,23 @@ namespace PizzaShop.Sizes
 {
     public abstract class ProductSize : IProductSize
     {
-        protected readonly Text SizeName;
+        private readonly Text _sizeName;
+        private readonly Money _price;
 
-        protected ProductSize(Text sizeName) => SizeName = sizeName;
+        protected ProductSize(Text sizeName, Money price)
+        {
+            _sizeName = sizeName;
+            _price = price;
+        }
 
-        public virtual Money Price() => new Free();
+        public static implicit operator string(ProductSize instance) => instance._sizeName;
 
-        public override string ToString() => SizeName;
+        public override string ToString() => _sizeName;
 
-        public override bool Equals(object other) => other != null && other.ToString().Equals(SizeName);
+        public virtual Money Price() => _price;
 
-        public override int GetHashCode() => SizeName.GetHashCode() * 17 + Price().GetHashCode();
-    }
+        public override bool Equals(object other) => other != null && other.ToString().Equals(_sizeName);
 
-    public class Free : Money
-    {
-        public Free() : base(0) { }
+        public override int GetHashCode() => _sizeName.GetHashCode() * 17 + Price().GetHashCode();
     }
 }

@@ -9,4 +9,9 @@ namespace PizzaShop.PrimitiveConcepts
 
         public override string ToString() => _value;
     }
+
+    public class NullText : Text
+    {
+        public NullText() : base(string.Empty) { }
+    }
 }

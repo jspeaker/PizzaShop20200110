@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using PizzaShop.Controllers.Request;
 
 namespace PizzaShop.Controllers
 {
@@ -14,12 +15,11 @@ namespace PizzaShop.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        public Pizza Get()
+        [HttpPost]
+        public string Post(Order order)
         {
-            IProduct pizza = new Pizza();
-            _logger.LogInformation(pizza.Description());
-            return (Pizza) pizza;
+            _logger.LogInformation(order.Invoice());
+            return order.Invoice();
         }
     }
 }

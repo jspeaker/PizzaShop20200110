@@ -1,12 +1,10 @@
 ﻿using PizzaShop.Prices;
-using PizzaShop.PrimitiveConcepts;
+using PizzaShop.Sizes.Texts;
 
 namespace PizzaShop.Sizes
 {
     public class PersonalSize : ProductSize
     {
-        public PersonalSize() : base(new PersonalSizeName()) { }
-
-        public override Money Price() => new PersonalSizePizzaPrice();
+        public PersonalSize() : base(new PersonalSizeName(), new PersonalSizePizzaPrice()) { }
     }
 }

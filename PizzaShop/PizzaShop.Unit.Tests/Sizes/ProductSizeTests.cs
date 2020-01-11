@@ -1,8 +1,9 @@
 ﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PizzaShop.Sizes;
+using PizzaShop.Sizes.Texts;
 
-namespace PizzaShop.Unit.Tests
+namespace PizzaShop.Unit.Tests.Sizes
 {
     [TestClass]
     public class ProductSizeTests
