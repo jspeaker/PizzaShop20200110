@@ -25,10 +25,10 @@ namespace PizzaShop.Unit.Tests.Ingredients
         }
 
         [TestMethod, TestCategory("Unit")]
-        public void GivenStandardIngredientOnFamilyPizza_WhenAskingForPrice_ThenItShouldReturnFifteenPercentOfThePizzaPrice()
+        public void GivenStandardIngredientOnLargePizza_WhenAskingForPrice_ThenItShouldReturnFifteenPercentOfThePizzaPrice()
         {
             // arrange
-            IIngredient ingredient = new MeatIngredientTestImplementation(new Pizza(new FamilySize()));
+            IIngredient ingredient = new MeatIngredientTestImplementation(new Pizza(new LargeSize()));
 
             // act
             Money actual = ingredient.Price();

@@ -3,8 +3,8 @@ using PizzaShop.Sizes.Texts;
 
 namespace PizzaShop.Sizes
 {
-    public class FamilySize : ProductSize
+    public class LargeSize : ProductSize
     {
-        public FamilySize() : base(new FamilySizeName(), new FamilySizePizzaPrice()) { }
+        public LargeSize() : base(new LargeSizeName(), new LargeSizePizzaPrice()) { }
     }
 }

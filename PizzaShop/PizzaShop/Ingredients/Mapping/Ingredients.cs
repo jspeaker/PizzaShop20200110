@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using PizzaShop.Ingredients.Meat;
+﻿using PizzaShop.Ingredients.Meat;
 using PizzaShop.Ingredients.Standard;
+using System;
+using System.Collections.Generic;
 
 namespace PizzaShop.Ingredients.Mapping
 {

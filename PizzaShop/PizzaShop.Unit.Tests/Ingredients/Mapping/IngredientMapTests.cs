@@ -9,7 +9,7 @@ using System;
 namespace PizzaShop.Unit.Tests.Ingredients.Mapping
 {
     [TestClass]
-    public class IngredientViewModelTests
+    public class IngredientMapTests
     {
         [TestMethod, TestCategory("Unit")]
         public void GivenExistingIngredientName_WhenAskingToMap_ThenItShouldReturnCorrectIngredient()

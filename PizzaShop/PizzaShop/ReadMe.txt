@@ -4,16 +4,23 @@
 	"pizzas": 
 	[
 		{
-			"size": "family",
+			"size": "Large",
 			"ingredients": 
 			[
 				"olives",
-				"bacon",
-				"mushrooms"
+				"bacon"
 			]
 		},
 		{
-			"size": "personal",
+			"size": "Medium",
+			"ingredients": 
+			[
+				"bacon",
+				"olives"
+			]
+		},
+		{
+			"size": "Personal",
 			"ingredients": 
 			[
 				"pepperoni"

@@ -33,10 +33,10 @@ namespace PizzaShop.Products
 
         public string Description()
         {
-            if (_ingredients == null || !_ingredients.Any()) return $"{_size} {_productName}";
+            if (_ingredients == null || !_ingredients.Any()) return $"{_productName}";
 
             List<Text> ingredientNames = _ingredients.Select(i => i.Name()).ToList();
-            return $"{_size} {_productName} with {string.Join(", ", ingredientNames.Select(i => i.ToString()))}";
+            return $"{_productName} with {string.Join(", ", ingredientNames.Select(i => i.ToString()))}";
         }
 
         public decimal Price()

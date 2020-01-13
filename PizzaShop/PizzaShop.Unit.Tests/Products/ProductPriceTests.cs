@@ -38,10 +38,10 @@ namespace PizzaShop.Unit.Tests.Products
         }
 
         [TestMethod, TestCategory("Unit")]
-        public void GivenFamilySizePizza_WhenAskingForPrice_ThenItShouldReturnCorrectValue()
+        public void GivenLargeSizePizza_WhenAskingForPrice_ThenItShouldReturnCorrectValue()
         {
             // arrange
-            IProduct pizza = new Pizza(new FamilySize());
+            IProduct pizza = new Pizza(new LargeSize());
 
             // act
             decimal actual = pizza.Price();
@@ -67,12 +67,12 @@ namespace PizzaShop.Unit.Tests.Products
         }
 
         [TestMethod, TestCategory("Unit")]
-        public void GivenFamilySizePizzaWithOneStandardIngredient_WhenAskingForPrice_ThenItShouldReturnCorrectValue()
+        public void GivenLargeSizePizzaWithOneStandardIngredient_WhenAskingForPrice_ThenItShouldReturnCorrectValue()
         {
             // arrange
-            IProduct pizza = new Pizza(new FamilySize(), new IIngredient[]
+            IProduct pizza = new Pizza(new LargeSize(), new IIngredient[]
             {
-                new Mushrooms(new Pizza(new FamilySize()))
+                new Mushrooms(new Pizza(new LargeSize()))
             });
 
             // act
@@ -100,13 +100,13 @@ namespace PizzaShop.Unit.Tests.Products
         }
 
         [TestMethod, TestCategory("Unit")]
-        public void GivenFamilySizePizzaWithTwoStandardIngredients_WhenAskingForPrice_ThenItShouldReturnCorrectValue()
+        public void GivenLargeSizePizzaWithTwoStandardIngredients_WhenAskingForPrice_ThenItShouldReturnCorrectValue()
         {
             // arrange
-            IProduct pizza = new Pizza(new FamilySize(), new IIngredient[]
+            IProduct pizza = new Pizza(new LargeSize(), new IIngredient[]
             {
-                new Mushrooms(new Pizza(new FamilySize())),
-                new Olives(new Pizza(new FamilySize()))
+                new Mushrooms(new Pizza(new LargeSize())),
+                new Olives(new Pizza(new LargeSize()))
             });
 
             // act
@@ -136,15 +136,15 @@ namespace PizzaShop.Unit.Tests.Products
         }
 
         [TestMethod, TestCategory("Unit")]
-        public void GivenFamilySizePizzaWithTwoStandardIngredientsAAndTwoMeatIngredients_WhenAskingForPrice_ThenItShouldReturnCorrectValue()
+        public void GivenLargeSizePizzaWithTwoStandardIngredientsAAndTwoMeatIngredients_WhenAskingForPrice_ThenItShouldReturnCorrectValue()
         {
             // arrange
-            IProduct pizza = new Pizza(new FamilySize(), new IIngredient[]
+            IProduct pizza = new Pizza(new LargeSize(), new IIngredient[]
             {
-                new Mushrooms(new Pizza(new FamilySize())),
-                new Olives(new Pizza(new FamilySize())),
-                new Bacon(new Pizza(new FamilySize())),
-                new Ham(new Pizza(new FamilySize()))
+                new Mushrooms(new Pizza(new LargeSize())),
+                new Olives(new Pizza(new LargeSize())),
+                new Bacon(new Pizza(new LargeSize())),
+                new Ham(new Pizza(new LargeSize()))
             });
 
             // act

@@ -1,7 +1,6 @@
 ﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PizzaShop.Sizes;
-using PizzaShop.Sizes.Texts;
 
 namespace PizzaShop.Unit.Tests.Sizes
 {
@@ -31,14 +30,40 @@ namespace PizzaShop.Unit.Tests.Sizes
             string actual = size.ToString();
 
             // assert
-            actual.Should().Be(new PersonalSizeName());
+            actual.Should().Be("Personal");
         }
 
         [TestMethod, TestCategory("Unit")]
-        public void GivenFamilySize_WhenAskingForPrice_ThenItShouldReturnCorrectValue()
+        public void GivenMediumSize_WhenAskingForPrice_ThenItShouldReturnCorrectValue()
         {
             // arrange
-            IProductSize size = new FamilySize();
+            IProductSize size = new MediumSize();
+
+            // act
+            decimal actual = size.Price();
+
+            // assert
+            actual.Should().Be(12.0m);
+        }
+
+        [TestMethod, TestCategory("Unit")]
+        public void GivenMediumSize_WhenAskingForName_ThenItShouldReturnCorrectValue()
+        {
+            // arrange
+            IProductSize size = new MediumSize();
+
+            // act
+            string actual = size.ToString();
+
+            // assert
+            actual.Should().Be("Medium");
+        }
+
+        [TestMethod, TestCategory("Unit")]
+        public void GivenLargeSize_WhenAskingForPrice_ThenItShouldReturnCorrectValue()
+        {
+            // arrange
+            IProductSize size = new LargeSize();
 
             // act
             decimal actual = size.Price();
@@ -48,16 +73,16 @@ namespace PizzaShop.Unit.Tests.Sizes
         }
 
         [TestMethod, TestCategory("Unit")]
-        public void GivenFamilySize_WhenAskingForName_ThenItShouldReturnCorrectValue()
+        public void GivenLargeSize_WhenAskingForName_ThenItShouldReturnCorrectValue()
         {
             // arrange
-            IProductSize size = new FamilySize();
+            IProductSize size = new LargeSize();
 
             // act
             string actual = size.ToString();
 
             // assert
-            actual.Should().Be(new FamilySizeName());
+            actual.Should().Be("Large");
         }
     }
 }

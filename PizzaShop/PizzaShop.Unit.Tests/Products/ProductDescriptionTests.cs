@@ -21,7 +21,7 @@ namespace PizzaShop.Unit.Tests.Products
             string actual = pizza.Description();
 
             // assert
-            actual.Should().Be("Personal pizza");
+            actual.Should().Be("Pizza");
         }
 
         [TestMethod, TestCategory("Unit")]
@@ -34,20 +34,33 @@ namespace PizzaShop.Unit.Tests.Products
             string actual = pizza.Description();
 
             // assert
-            actual.Should().Be("Personal pizza");
+            actual.Should().Be("Pizza");
         }
 
         [TestMethod, TestCategory("Unit")]
-        public void GivenFamilySizePizza_WhenAskingForDescription_ThenItShouldReturnCorrectValue()
+        public void GivenMediumSizePizza_WhenAskingForDescription_ThenItShouldReturnCorrectValue()
         {
             // arrange
-            IProduct pizza = new Pizza(new FamilySize());
+            IProduct pizza = new Pizza(new MediumSize());
 
             // act
             string actual = pizza.Description();
 
             // assert
-            actual.Should().Be("Family pizza");
+            actual.Should().Be("Pizza");
+        }
+
+        [TestMethod, TestCategory("Unit")]
+        public void GivenLargeSizePizza_WhenAskingForDescription_ThenItShouldReturnCorrectValue()
+        {
+            // arrange
+            IProduct pizza = new Pizza(new LargeSize());
+
+            // act
+            string actual = pizza.Description();
+
+            // assert
+            actual.Should().Be("Pizza");
         }
 
         [TestMethod, TestCategory("Unit")]
@@ -60,7 +73,7 @@ namespace PizzaShop.Unit.Tests.Products
             string actual = pizza.Description();
 
             // assert
-            actual.Should().Be("Personal pizza with mushrooms");
+            actual.Should().Be("Pizza with mushrooms");
         }
 
         [TestMethod, TestCategory("Unit")]
@@ -75,7 +88,7 @@ namespace PizzaShop.Unit.Tests.Products
             string actual = pizza.Description();
 
             // assert
-            actual.Should().Be("Personal pizza with mushrooms, olives");
+            actual.Should().Be("Pizza with mushrooms, olives");
         }
 
         [TestMethod, TestCategory("Unit")]
@@ -90,14 +103,14 @@ namespace PizzaShop.Unit.Tests.Products
             string actual = pizza.Description();
 
             // assert
-            actual.Should().Be("Personal pizza with mushrooms, bacon, olives");
+            actual.Should().Be("Pizza with mushrooms, bacon, olives");
         }
 
         [TestMethod, TestCategory("Unit")]
-        public void GivenFamilySizePizzaWithMushroomsBaconOlivesAndHam_WhenAskingForDescription_ThenItShouldReturnCorrectValue()
+        public void GivenMediumSizePizzaWithMushroomsBaconOlivesAndHam_WhenAskingForDescription_ThenItShouldReturnCorrectValue()
         {
             // arrange
-            FamilySize size = new FamilySize();
+            MediumSize size = new MediumSize();
             Pizza basePizza = new Pizza(size);
             IProduct pizza = new Pizza(size, new IIngredient[] { new Mushrooms(basePizza), new Bacon(basePizza), new Olives(basePizza), new Ham(basePizza)  });
 
@@ -105,7 +118,22 @@ namespace PizzaShop.Unit.Tests.Products
             string actual = pizza.Description();
 
             // assert
-            actual.Should().Be("Family pizza with mushrooms, bacon, olives, ham");
+            actual.Should().Be("Pizza with mushrooms, bacon, olives, ham");
+        }
+
+        [TestMethod, TestCategory("Unit")]
+        public void GivenLargeSizePizzaWithMushroomsBaconOlivesAndHam_WhenAskingForDescription_ThenItShouldReturnCorrectValue()
+        {
+            // arrange
+            LargeSize size = new LargeSize();
+            Pizza basePizza = new Pizza(size);
+            IProduct pizza = new Pizza(size, new IIngredient[] { new Mushrooms(basePizza), new Bacon(basePizza), new Olives(basePizza), new Ham(basePizza)  });
+
+            // act
+            string actual = pizza.Description();
+
+            // assert
+            actual.Should().Be("Pizza with mushrooms, bacon, olives, ham");
         }
     }
 }
