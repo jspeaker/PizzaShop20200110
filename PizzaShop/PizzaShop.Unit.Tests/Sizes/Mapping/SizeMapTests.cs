@@ -9,6 +9,34 @@ namespace PizzaShop.Unit.Tests.Sizes.Mapping
     public class SizeMapTests
     {
         [TestMethod, TestCategory("Unit")]
+        public void GivenFullSizeName_WhenAskingToMap_ThenItShouldReturnCorrectSize()
+        {
+            // arrange
+            const string name = "Full";
+            SizeMap sizeMap = new SizeMap();
+
+            // act
+            IProductSize mappedSize = sizeMap.DomainSize(name);
+
+            // assert
+            ((decimal)mappedSize.Price()).Should().Be(14.0m);
+        }
+
+        [TestMethod, TestCategory("Unit")]
+        public void GivenHalfSizeName_WhenAskingToMap_ThenItShouldReturnCorrectSize()
+        {
+            // arrange
+            const string name = "Half-Size";
+            SizeMap sizeMap = new SizeMap();
+
+            // act
+            IProductSize mappedSize = sizeMap.DomainSize(name);
+
+            // assert
+            ((decimal)mappedSize.Price()).Should().Be(8.0m);
+        }
+
+        [TestMethod, TestCategory("Unit")]
         public void GivenPersonalSizeName_WhenAskingToMap_ThenItShouldReturnCorrectSize()
         {
             // arrange
@@ -19,7 +47,7 @@ namespace PizzaShop.Unit.Tests.Sizes.Mapping
             IProductSize mappedSize = sizeMap.DomainSize(name);
 
             // assert
-            ((decimal) mappedSize.Price()).Should().Be(9.0m);
+            ((decimal)mappedSize.Price()).Should().Be(9.0m);
         }
 
         [TestMethod, TestCategory("Unit")]
@@ -33,7 +61,7 @@ namespace PizzaShop.Unit.Tests.Sizes.Mapping
             IProductSize mappedSize = sizeMap.DomainSize(name);
 
             // assert
-            ((decimal) mappedSize.Price()).Should().Be(12.0m);
+            ((decimal)mappedSize.Price()).Should().Be(12.0m);
         }
 
         [TestMethod, TestCategory("Unit")]
@@ -47,7 +75,7 @@ namespace PizzaShop.Unit.Tests.Sizes.Mapping
             IProductSize mappedSize = sizeMap.DomainSize(name);
 
             // assert
-            ((decimal) mappedSize.Price()).Should().Be(18.0m);
+            ((decimal)mappedSize.Price()).Should().Be(18.0m);
         }
     }
 }

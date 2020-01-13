@@ -15,7 +15,7 @@ namespace PizzaShop.Unit.Tests.Ingredients
         public void GivenStandardIngredientOnPersonalPizza_WhenAskingForPrice_ThenItShouldReturnTenPercentOfThePizzaPrice()
         {
             // arrange
-            IIngredient ingredient = new StandardIngredientTestImplementation(new Pizza(new PersonalSize()), new FakeIngredientName());
+            IIngredient ingredient = new StandardIngredientTestImplementation(new Pizza(new PersonalPizzaSize()), new FakeIngredientName());
 
             // act
             Money actual = ingredient.Price();
@@ -28,7 +28,7 @@ namespace PizzaShop.Unit.Tests.Ingredients
         public void GivenStandardIngredientOnLargePizza_WhenAskingForPrice_ThenItShouldReturnTenPercentOfThePizzaPrice()
         {
             // arrange
-            IIngredient ingredient = new StandardIngredientTestImplementation(new Pizza(new LargeSize()), new FakeIngredientName());
+            IIngredient ingredient = new StandardIngredientTestImplementation(new Pizza(new LargePizzaSize()), new FakeIngredientName());
 
             // act
             Money actual = ingredient.Price();

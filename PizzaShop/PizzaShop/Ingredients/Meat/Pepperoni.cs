@@ -10,6 +10,6 @@ namespace PizzaShop.Ingredients.Meat
 
     public class PepperoniName : Text
     {
-        public PepperoniName() : base("pepperoni") { }
+        public PepperoniName() : base("Pepperoni") { }
     }
 }

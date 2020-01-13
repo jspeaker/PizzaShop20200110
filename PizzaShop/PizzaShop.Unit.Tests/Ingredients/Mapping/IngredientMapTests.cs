@@ -15,7 +15,7 @@ namespace PizzaShop.Unit.Tests.Ingredients.Mapping
         public void GivenExistingIngredientName_WhenAskingToMap_ThenItShouldReturnCorrectIngredient()
         {
             // arrange
-            const string name = "olives";
+            const string name = "Olives";
             IngredientMap ingredientMap = new IngredientMap();
 
             // act

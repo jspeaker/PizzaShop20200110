@@ -8,10 +8,62 @@ namespace PizzaShop.Unit.Tests.Sizes
     public class ProductSizeTests
     {
         [TestMethod, TestCategory("Unit")]
-        public void GivenPersonalSize_WhenAskingForPrice_ThenItShouldReturnCorrectValue()
+        public void GivenHalfCalzoneSize_WhenAskingForPrice_ThenItShouldReturnCorrectValue()
         {
             // arrange
-            IProductSize size = new PersonalSize();
+            IProductSize size = new HalfCalzoneSize();
+
+            // act
+            decimal actual = size.Price();
+
+            // assert
+            actual.Should().Be(8.0m);
+        }
+
+        [TestMethod, TestCategory("Unit")]
+        public void GivenHalfCalzoneSize_WhenAskingForName_ThenItShouldReturnCorrectValue()
+        {
+            // arrange
+            IProductSize size = new HalfCalzoneSize();
+
+            // act
+            string actual = size.ToString();
+
+            // assert
+            actual.Should().Be("Half-Size");
+        }
+
+        [TestMethod, TestCategory("Unit")]
+        public void GivenFullCalzoneSize_WhenAskingForPrice_ThenItShouldReturnCorrectValue()
+        {
+            // arrange
+            IProductSize size = new FullCalzoneSize();
+
+            // act
+            decimal actual = size.Price();
+
+            // assert
+            actual.Should().Be(14.0m);
+        }
+
+        [TestMethod, TestCategory("Unit")]
+        public void GivenFullCalzoneSize_WhenAskingForName_ThenItShouldReturnCorrectValue()
+        {
+            // arrange
+            IProductSize size = new FullCalzoneSize();
+
+            // act
+            string actual = size.ToString();
+
+            // assert
+            actual.Should().Be("Full");
+        }
+
+        [TestMethod, TestCategory("Unit")]
+        public void GivenPersonalPizzaSize_WhenAskingForPrice_ThenItShouldReturnCorrectValue()
+        {
+            // arrange
+            IProductSize size = new PersonalPizzaSize();
 
             // act
             decimal actual = size.Price();
@@ -21,10 +73,10 @@ namespace PizzaShop.Unit.Tests.Sizes
         }
 
         [TestMethod, TestCategory("Unit")]
-        public void GivenPersonalSize_WhenAskingForName_ThenItShouldReturnCorrectValue()
+        public void GivenPersonalPizzaSize_WhenAskingForName_ThenItShouldReturnCorrectValue()
         {
             // arrange
-            IProductSize size = new PersonalSize();
+            IProductSize size = new PersonalPizzaSize();
 
             // act
             string actual = size.ToString();
@@ -34,10 +86,10 @@ namespace PizzaShop.Unit.Tests.Sizes
         }
 
         [TestMethod, TestCategory("Unit")]
-        public void GivenMediumSize_WhenAskingForPrice_ThenItShouldReturnCorrectValue()
+        public void GivenMediumPizzaSize_WhenAskingForPrice_ThenItShouldReturnCorrectValue()
         {
             // arrange
-            IProductSize size = new MediumSize();
+            IProductSize size = new MediumPizzaSize();
 
             // act
             decimal actual = size.Price();
@@ -47,10 +99,10 @@ namespace PizzaShop.Unit.Tests.Sizes
         }
 
         [TestMethod, TestCategory("Unit")]
-        public void GivenMediumSize_WhenAskingForName_ThenItShouldReturnCorrectValue()
+        public void GivenMediumPizzaSize_WhenAskingForName_ThenItShouldReturnCorrectValue()
         {
             // arrange
-            IProductSize size = new MediumSize();
+            IProductSize size = new MediumPizzaSize();
 
             // act
             string actual = size.ToString();
@@ -60,10 +112,10 @@ namespace PizzaShop.Unit.Tests.Sizes
         }
 
         [TestMethod, TestCategory("Unit")]
-        public void GivenLargeSize_WhenAskingForPrice_ThenItShouldReturnCorrectValue()
+        public void GivenLargePizzaSize_WhenAskingForPrice_ThenItShouldReturnCorrectValue()
         {
             // arrange
-            IProductSize size = new LargeSize();
+            IProductSize size = new LargePizzaSize();
 
             // act
             decimal actual = size.Price();
@@ -73,10 +125,10 @@ namespace PizzaShop.Unit.Tests.Sizes
         }
 
         [TestMethod, TestCategory("Unit")]
-        public void GivenLargeSize_WhenAskingForName_ThenItShouldReturnCorrectValue()
+        public void GivenLargePizzaSize_WhenAskingForName_ThenItShouldReturnCorrectValue()
         {
             // arrange
-            IProductSize size = new LargeSize();
+            IProductSize size = new LargePizzaSize();
 
             // act
             string actual = size.ToString();

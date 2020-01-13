@@ -1,29 +1,55 @@
 ﻿Sample post body:
 
 {
-	"pizzas": 
+	"products": 
 	[
 		{
+			"name": "Pizza",
 			"size": "Large",
 			"ingredients": 
 			[
-				"olives",
-				"bacon"
+				"Olives",
+				"Bacon",
+				"Mozzarella"
 			]
 		},
 		{
+			"name": "Pizza",
 			"size": "Medium",
 			"ingredients": 
 			[
-				"bacon",
-				"olives"
+				"Bacon",
+				"Olives",
+				"Mozzarella"
 			]
 		},
 		{
+			"name": "Pizza",
 			"size": "Personal",
 			"ingredients": 
 			[
-				"pepperoni"
+				"Pepperoni",
+				"Mozzarella"
+			]
+		},
+		{
+			"name": "Calzone",
+			"size": "Full",
+			"ingredients": 
+			[
+				"Ham",
+				"Olives",
+				"Mozzarella"
+			]
+		},
+		{
+			"name": "Calzone",
+			"size": "Half-Size",
+			"ingredients": 
+			[
+				"Pepperoni",
+				"Mushrooms",
+				"Mozzarella"
 			]
 		}
 	]

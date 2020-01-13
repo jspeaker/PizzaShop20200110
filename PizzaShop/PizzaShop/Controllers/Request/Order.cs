@@ -1,7 +1,5 @@
-﻿using PizzaShop.Ingredients.Mapping;
+﻿using PizzaShop.Controllers.Request.Strategies;
 using PizzaShop.Products;
-using PizzaShop.Sizes;
-using PizzaShop.Sizes.Mapping;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,30 +7,26 @@ namespace PizzaShop.Controllers.Request
 {
     public class Order
     {
-        private readonly IngredientMap _ingredientMap;
-        private readonly SizeMap _sizeMap;
+        private List<IProduct> _products;
+        private readonly IOrderStrategy _orderStrategy;
 
-        public PizzaRequest[] Pizzas { get; set; }
+        public ProductRequest[] Products { get; set; }
 
-        public Order() : this(new IngredientMap(), new SizeMap()) { }
+        public Order() : this(new List<IProduct>()) { }
 
-        private Order(IngredientMap ingredientMap, SizeMap sizeMap)
+        private Order(List<IProduct> products) : this(products, new PizzaOrderStrategy(products)) { }
+
+        private Order(List<IProduct> products, IOrderStrategy orderStrategy)
         {
-            _ingredientMap = ingredientMap;
-            _sizeMap = sizeMap;
+            _products = products;
+            _orderStrategy = orderStrategy;
         }
 
         public string Invoice()
-        { 
-            List<Pizza> pizzas = new List<Pizza>();
+        {
+            foreach (ProductRequest product in Products) _products = _orderStrategy.Add(product);
 
-            foreach (PizzaRequest pizza in Pizzas)
-            {
-                IProductSize size = _sizeMap.DomainSize(pizza.Size);
-                pizzas.Add(new Pizza(size, pizza.Ingredients.Select(i => _ingredientMap.DomainIngredient(i, new Pizza(size))).ToArray()));
-            }
-
-            return $"{string.Join("\n\n",  pizzas.Select(p => p.Description() + "\n" + p.Price()))}";
+            return $"{string.Join("\n\n", _products.Select(p => p.Description() + "\n" + p.Price()))}";
         }
     }
 }

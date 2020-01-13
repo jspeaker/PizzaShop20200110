@@ -10,6 +10,6 @@ namespace PizzaShop.Ingredients.Standard
 
     public class MozzarellaName : Text
     {
-        public MozzarellaName() : base("mozzarella") { }
+        public MozzarellaName() : base("Mozzarella") { }
     }
 }

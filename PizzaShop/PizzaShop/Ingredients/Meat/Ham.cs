@@ -10,6 +10,6 @@ namespace PizzaShop.Ingredients.Meat
 
     public class HamName : Text
     {
-        public HamName() : base("ham") { }
+        public HamName() : base("Ham") { }
     }
 }

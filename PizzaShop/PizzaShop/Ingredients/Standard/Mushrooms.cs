@@ -10,6 +10,6 @@ namespace PizzaShop.Ingredients.Standard
 
     public class MushroomsName : Text
     {
-        public MushroomsName() : base("mushrooms") { }
+        public MushroomsName() : base("Mushrooms") { }
     }
 }

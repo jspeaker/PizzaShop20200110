@@ -1,7 +1,8 @@
 ﻿namespace PizzaShop.Controllers.Request
 {
-    public class PizzaRequest
+    public class ProductRequest
     {
+        public string Name { get; set; }
         public string Size { get; set; }
         public string[] Ingredients { get; set; }
     }

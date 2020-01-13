@@ -8,20 +8,21 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
     public class OrderTests
     {
         [TestMethod, TestCategory("Unit")]
-        public void GivenPersonalSizePizza_WhenAskingForInvoice_ThenItShouldReturnCorrectInvoice()
+        public void GivenHalfSizeCalzone_WhenAskingForInvoice_ThenItShouldReturnCorrectInvoice()
         {
             // arrange
             Order order = new Order
             {
-                Pizzas = new []
+                Products = new []
                 {
-                    new PizzaRequest
+                    new ProductRequest
                     {
-                        Size = "Personal",
+                        Name = "Calzone",
+                        Size = "Half-Size",
                         Ingredients = new []
                         {
-                            "mushrooms",
-                            "pepperoni"
+                            "Mushrooms",
+                            "Pepperoni"
                         }
                     }
                 }
@@ -31,7 +32,76 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
             string invoice = order.Invoice();
 
             // assert
-            invoice.Should().Be("Pizza with mushrooms, pepperoni\n11.250");
+            invoice.Should().Be("Half-Size Calzone with Mushrooms and Pepperoni\n10.000");
+        }
+
+        [TestMethod, TestCategory("Unit")]
+        public void GivenHalfSizeCalzoneAndChangedIngredients_WhenAskingForInvoice_ThenItShouldReturnCorrectInvoice()
+        {
+            // arrange
+            Order order = new Order
+            {
+                Products = new[]
+                {
+                    new ProductRequest
+                    {
+                        Name = "Calzone",
+                        Size = "Half-Size",
+                        Ingredients = new []
+                        {
+                            "Mushrooms",
+                            "Pepperoni"
+                        }
+                    }
+                }
+            };
+
+            order.Products = new[]
+            {
+                new ProductRequest
+                {
+                    Name = "Calzone",
+                    Size = "Half-Size",
+                    Ingredients = new[]
+                    {
+                        "Pepperoni"
+                    }
+                }
+            };
+
+            // act
+            string invoice = order.Invoice();
+
+            // assert
+            invoice.Should().Be("Half-Size Calzone with Pepperoni\n9.200");
+        }
+
+        [TestMethod, TestCategory("Unit")]
+        public void GivenPersonalSizePizza_WhenAskingForInvoice_ThenItShouldReturnCorrectInvoice()
+        {
+            // arrange
+            Order order = new Order
+            {
+                Products = new []
+                {
+                    new ProductRequest
+                    {
+                        Name = "Pizza",
+                        Size = "Personal",
+                        Ingredients = new []
+                        {
+                            "Mushrooms",
+                            "Pepperoni"
+                        }
+                    }
+                }
+            };
+
+            // act
+            string invoice = order.Invoice();
+
+            // assert
+            invoice.Should().Be("Personal Pizza with Mushrooms and Pepperoni\n11.250");
         }
 
         [TestMethod, TestCategory("Unit")]
@@ -40,28 +110,30 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
             // arrange
             Order order = new Order
             {
-                Pizzas = new []
+                Products = new []
                 {
-                    new PizzaRequest
+                    new ProductRequest
                     {
+                        Name = "Pizza",
                         Size = "Personal",
                         Ingredients = new []
                         {
-                            "mushrooms",
-                            "pepperoni"
+                            "Mushrooms",
+                            "Pepperoni"
                         }
                     }
                 }
             };
 
-            order.Pizzas = new[]
+            order.Products = new[]
             {
-                new PizzaRequest
+                new ProductRequest
                 {
+                    Name = "Pizza",
                     Size = "Personal",
                     Ingredients = new[]
                     {
-                        "pepperoni"
+                        "Pepperoni"
                     }
                 }
             };
@@ -70,7 +142,7 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
             string invoice = order.Invoice();
 
             // assert
-            invoice.Should().Be("Pizza with pepperoni\n10.350");
+            invoice.Should().Be("Personal Pizza with Pepperoni\n10.350");
         }
     }
 }

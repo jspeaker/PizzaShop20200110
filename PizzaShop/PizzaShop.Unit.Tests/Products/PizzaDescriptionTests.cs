@@ -9,7 +9,7 @@ using PizzaShop.Sizes;
 namespace PizzaShop.Unit.Tests.Products
 {
     [TestClass]
-    public class ProductDescriptionTests
+    public class PizzaDescriptionTests
     {
         [TestMethod, TestCategory("Unit")]
         public void GivenDefaultPizza_WhenAskingForDescription_ThenItShouldReturnCorrectValue()
@@ -21,119 +21,119 @@ namespace PizzaShop.Unit.Tests.Products
             string actual = pizza.Description();
 
             // assert
-            actual.Should().Be("Pizza");
+            actual.Should().Be("Personal Pizza");
         }
 
         [TestMethod, TestCategory("Unit")]
         public void GivenPersonalSizePizza_WhenAskingForDescription_ThenItShouldReturnCorrectValue()
         {
             // arrange
-            IProduct pizza = new Pizza(new PersonalSize());
+            IProduct pizza = new Pizza(new PersonalPizzaSize());
 
             // act
             string actual = pizza.Description();
 
             // assert
-            actual.Should().Be("Pizza");
+            actual.Should().Be("Personal Pizza");
         }
 
         [TestMethod, TestCategory("Unit")]
         public void GivenMediumSizePizza_WhenAskingForDescription_ThenItShouldReturnCorrectValue()
         {
             // arrange
-            IProduct pizza = new Pizza(new MediumSize());
+            IProduct pizza = new Pizza(new MediumPizzaSize());
 
             // act
             string actual = pizza.Description();
 
             // assert
-            actual.Should().Be("Pizza");
+            actual.Should().Be("Medium Pizza");
         }
 
         [TestMethod, TestCategory("Unit")]
         public void GivenLargeSizePizza_WhenAskingForDescription_ThenItShouldReturnCorrectValue()
         {
             // arrange
-            IProduct pizza = new Pizza(new LargeSize());
+            IProduct pizza = new Pizza(new LargePizzaSize());
 
             // act
             string actual = pizza.Description();
 
             // assert
-            actual.Should().Be("Pizza");
+            actual.Should().Be("Large Pizza");
         }
 
         [TestMethod, TestCategory("Unit")]
         public void GivenPersonalSizePizzaWithMushrooms_WhenAskingForDescription_ThenItShouldReturnCorrectValue()
         {
             // arrange
-            IProduct pizza = new Pizza(new PersonalSize(), new IIngredient[] { new Mushrooms(new Pizza(new PersonalSize())) });
+            IProduct pizza = new Pizza(new PersonalPizzaSize(), new IIngredient[] { new Mushrooms(new Pizza(new PersonalPizzaSize())) });
 
             // act
             string actual = pizza.Description();
 
             // assert
-            actual.Should().Be("Pizza with mushrooms");
+            actual.Should().Be("Personal Pizza with Mushrooms");
         }
 
         [TestMethod, TestCategory("Unit")]
         public void GivenPersonalSizePizzaWithMushroomsAndOlives_WhenAskingForDescription_ThenItShouldReturnCorrectValue()
         {
             // arrange
-            PersonalSize size = new PersonalSize();
-            Pizza basePizza = new Pizza(size);
-            IProduct pizza = new Pizza(size, new IIngredient[] { new Mushrooms(basePizza), new Olives(basePizza),  });
+            PersonalPizzaSize pizzaSize = new PersonalPizzaSize();
+            Pizza basePizza = new Pizza(pizzaSize);
+            IProduct pizza = new Pizza(pizzaSize, new IIngredient[] { new Mushrooms(basePizza), new Olives(basePizza),  });
 
             // act
             string actual = pizza.Description();
 
             // assert
-            actual.Should().Be("Pizza with mushrooms, olives");
+            actual.Should().Be("Personal Pizza with Mushrooms and Olives");
         }
 
         [TestMethod, TestCategory("Unit")]
         public void GivenPersonalSizePizzaWithMushroomsBaconAndOlives_WhenAskingForDescription_ThenItShouldReturnCorrectValue()
         {
             // arrange
-            PersonalSize size = new PersonalSize();
-            Pizza basePizza = new Pizza(size);
-            IProduct pizza = new Pizza(size, new IIngredient[] { new Mushrooms(basePizza), new Bacon(basePizza), new Olives(basePizza) });
+            PersonalPizzaSize pizzaSize = new PersonalPizzaSize();
+            Pizza basePizza = new Pizza(pizzaSize);
+            IProduct pizza = new Pizza(pizzaSize, new IIngredient[] { new Mushrooms(basePizza), new Bacon(basePizza), new Olives(basePizza) });
 
             // act
             string actual = pizza.Description();
 
             // assert
-            actual.Should().Be("Pizza with mushrooms, bacon, olives");
+            actual.Should().Be("Personal Pizza with Mushrooms, Bacon and Olives");
         }
 
         [TestMethod, TestCategory("Unit")]
         public void GivenMediumSizePizzaWithMushroomsBaconOlivesAndHam_WhenAskingForDescription_ThenItShouldReturnCorrectValue()
         {
             // arrange
-            MediumSize size = new MediumSize();
-            Pizza basePizza = new Pizza(size);
-            IProduct pizza = new Pizza(size, new IIngredient[] { new Mushrooms(basePizza), new Bacon(basePizza), new Olives(basePizza), new Ham(basePizza)  });
+            MediumPizzaSize pizzaSize = new MediumPizzaSize();
+            Pizza basePizza = new Pizza(pizzaSize);
+            IProduct pizza = new Pizza(pizzaSize, new IIngredient[] { new Mushrooms(basePizza), new Bacon(basePizza), new Olives(basePizza), new Ham(basePizza)  });
 
             // act
             string actual = pizza.Description();
 
             // assert
-            actual.Should().Be("Pizza with mushrooms, bacon, olives, ham");
+            actual.Should().Be("Medium Pizza with Mushrooms, Bacon, Olives and Ham");
         }
 
         [TestMethod, TestCategory("Unit")]
         public void GivenLargeSizePizzaWithMushroomsBaconOlivesAndHam_WhenAskingForDescription_ThenItShouldReturnCorrectValue()
         {
             // arrange
-            LargeSize size = new LargeSize();
-            Pizza basePizza = new Pizza(size);
-            IProduct pizza = new Pizza(size, new IIngredient[] { new Mushrooms(basePizza), new Bacon(basePizza), new Olives(basePizza), new Ham(basePizza)  });
+            LargePizzaSize pizzaSize = new LargePizzaSize();
+            Pizza basePizza = new Pizza(pizzaSize);
+            IProduct pizza = new Pizza(pizzaSize, new IIngredient[] { new Mushrooms(basePizza), new Bacon(basePizza), new Olives(basePizza), new Ham(basePizza)  });
 
             // act
             string actual = pizza.Description();
 
             // assert
-            actual.Should().Be("Pizza with mushrooms, bacon, olives, ham");
+            actual.Should().Be("Large Pizza with Mushrooms, Bacon, Olives and Ham");
         }
     }
 }
