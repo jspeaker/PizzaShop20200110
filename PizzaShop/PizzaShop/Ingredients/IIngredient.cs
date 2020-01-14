@@ -1,5 +1,6 @@
 ﻿using PizzaShop.PrimitiveConcepts;
 using System;
+using PizzaShop.Franchise;
 
 namespace PizzaShop.Ingredients
 {
@@ -7,5 +8,6 @@ namespace PizzaShop.Ingredients
     {
         Money Price();
         Text Name();
+        bool IsAvailableAt(Location location);
     }
 }

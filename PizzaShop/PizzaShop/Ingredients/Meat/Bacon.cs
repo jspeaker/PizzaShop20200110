@@ -1,4 +1,5 @@
-﻿using PizzaShop.PrimitiveConcepts;
+﻿using PizzaShop.Franchise;
+using PizzaShop.Ingredients.Meat.Texts;
 using PizzaShop.Products;
 
 namespace PizzaShop.Ingredients.Meat
@@ -6,10 +7,7 @@ namespace PizzaShop.Ingredients.Meat
     public class Bacon : MeatIngredient
     {
         public Bacon(IProduct product) : base(product, new BaconName()) { }
-    }
 
-    public class BaconName : Text
-    {
-        public BaconName() : base("Bacon") { }
+        public override bool IsAvailableAt(Location location) => location != Location.ExpansionOne;
     }
 }

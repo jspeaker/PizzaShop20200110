@@ -9,6 +9,7 @@ namespace PizzaShop.Sizes.Mapping
         public Dictionary<string, Type> Types = new Dictionary<string, Type>
         {
             { new PersonalSizeName(), typeof(PersonalPizzaSize) },
+            { new MiniSizeName(), typeof(MiniPizzaSize) },
             { new MediumSizeName(), typeof(MediumPizzaSize) },
             { new LargeSizeName(), typeof(LargePizzaSize) },
             { new FullSizeName(), typeof(FullCalzoneSize) },

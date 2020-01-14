@@ -1,4 +1,5 @@
-﻿using PizzaShop.PrimitiveConcepts;
+﻿using PizzaShop.Franchise;
+using PizzaShop.Ingredients.Premium.Texts;
 using PizzaShop.Products;
 
 namespace PizzaShop.Ingredients.Premium
@@ -6,10 +7,7 @@ namespace PizzaShop.Ingredients.Premium
     public class RoastedGarlic : PremiumIngredient
     {
         public RoastedGarlic(IProduct product) : base(product, new RoastedGarlicName()) { }
-    }
 
-    public class RoastedGarlicName : Text
-    {
-        public RoastedGarlicName() : base("Roasted Garlic") { }
+        public override bool IsAvailableAt(Location location) => location != Location.ExpansionOne;
     }
 }

@@ -1,4 +1,5 @@
-﻿using PizzaShop.PrimitiveConcepts;
+﻿using PizzaShop.Franchise;
+using PizzaShop.PrimitiveConcepts;
 
 namespace PizzaShop.Ingredients
 {
@@ -16,6 +17,8 @@ namespace PizzaShop.Ingredients
         public Money Price() => _price;
 
         public Text Name() => _name;
+
+        public virtual bool IsAvailableAt(Location location) => true;
 
         public int CompareTo(object obj)
         {

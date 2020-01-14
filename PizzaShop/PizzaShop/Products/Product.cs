@@ -1,5 +1,5 @@
 using PizzaShop.Ingredients;
-using PizzaShop.Ingredients.Strategies;
+using PizzaShop.Ingredients.Strategies.IngredientList;
 using PizzaShop.PrimitiveConcepts;
 using PizzaShop.Sizes;
 using System;

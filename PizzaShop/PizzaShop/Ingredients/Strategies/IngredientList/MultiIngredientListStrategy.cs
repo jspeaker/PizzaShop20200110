@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace PizzaShop.Ingredients.Strategies
+namespace PizzaShop.Ingredients.Strategies.IngredientList
 {
     public class MultiIngredientListStrategy : IIngredientList
     {

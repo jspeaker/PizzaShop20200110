@@ -1,4 +1,4 @@
-namespace PizzaShop.Ingredients.Strategies
+namespace PizzaShop.Ingredients.Strategies.IngredientList
 {
     public interface IIngredientList
     {

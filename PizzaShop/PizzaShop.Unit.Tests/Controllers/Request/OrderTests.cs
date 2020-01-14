@@ -7,6 +7,7 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
     [TestClass]
     public class OrderTests
     {
+
         [TestMethod, TestCategory("Unit")]
         public void GivenHalfSizeCalzone_WhenAskingForInvoice_ThenItShouldReturnCorrectInvoice()
         {

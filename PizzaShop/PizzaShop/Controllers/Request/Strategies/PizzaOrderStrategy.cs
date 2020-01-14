@@ -5,6 +5,7 @@ using PizzaShop.Sizes;
 using PizzaShop.Sizes.Mapping;
 using System.Collections.Generic;
 using System.Linq;
+using PizzaShop.Franchise;
 
 namespace PizzaShop.Controllers.Request.Strategies
 {
@@ -25,12 +26,12 @@ namespace PizzaShop.Controllers.Request.Strategies
             _nextStrategy = nextStrategy;
         }
 
-        public List<IProduct> Add(ProductRequest productRequest)
+        public List<IProduct> Add(ProductRequest productRequest, Location location)
         {
-            if (!productRequest.Name.Equals(new PizzaProductName())) return _nextStrategy.Add(productRequest);
+            if (!productRequest.Name.Equals(new PizzaProductName())) return _nextStrategy.Add(productRequest, location);
 
             IProductSize size = _sizeMap.DomainSize(productRequest.Size);
-            _products.Add(new Pizza(size, productRequest.Ingredients.Select(i => _ingredientMap.DomainIngredient(i, new Pizza(size))).ToArray()));
+            _products.Add(new Pizza(size, productRequest.Ingredients.Select(i => _ingredientMap.DomainIngredient(i, new Pizza(size), location)).ToArray()));
             return _products;
         }
     }
