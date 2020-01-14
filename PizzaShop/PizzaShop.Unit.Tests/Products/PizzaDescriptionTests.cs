@@ -2,6 +2,7 @@ using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PizzaShop.Ingredients;
 using PizzaShop.Ingredients.Meat;
+using PizzaShop.Ingredients.Premium;
 using PizzaShop.Ingredients.Standard;
 using PizzaShop.Products;
 using PizzaShop.Sizes;
@@ -77,6 +78,32 @@ namespace PizzaShop.Unit.Tests.Products
         }
 
         [TestMethod, TestCategory("Unit")]
+        public void GivenPersonalSizePizzaWithPepperoni_WhenAskingForDescription_ThenItShouldReturnCorrectValue()
+        {
+            // arrange
+            IProduct pizza = new Pizza(new PersonalPizzaSize(), new IIngredient[] { new Pepperoni(new Pizza(new PersonalPizzaSize())) });
+
+            // act
+            string actual = pizza.Description();
+
+            // assert
+            actual.Should().Be("Personal Pizza with Pepperoni");
+        }
+
+        [TestMethod, TestCategory("Unit")]
+        public void GivenPersonalSizePizzaWithFetaCheese_WhenAskingForDescription_ThenItShouldReturnCorrectValue()
+        {
+            // arrange
+            IProduct pizza = new Pizza(new PersonalPizzaSize(), new IIngredient[] { new FetaCheese(new Pizza(new PersonalPizzaSize())),  });
+
+            // act
+            string actual = pizza.Description();
+
+            // assert
+            actual.Should().Be("Personal Pizza with Feta Cheese");
+        }
+
+        [TestMethod, TestCategory("Unit")]
         public void GivenPersonalSizePizzaWithMushroomsAndOlives_WhenAskingForDescription_ThenItShouldReturnCorrectValue()
         {
             // arrange
@@ -103,7 +130,7 @@ namespace PizzaShop.Unit.Tests.Products
             string actual = pizza.Description();
 
             // assert
-            actual.Should().Be("Personal Pizza with Mushrooms, Bacon and Olives");
+            actual.Should().Be("Personal Pizza with Mushrooms, Olives and Bacon");
         }
 
         [TestMethod, TestCategory("Unit")]
@@ -118,7 +145,7 @@ namespace PizzaShop.Unit.Tests.Products
             string actual = pizza.Description();
 
             // assert
-            actual.Should().Be("Medium Pizza with Mushrooms, Bacon, Olives and Ham");
+            actual.Should().Be("Medium Pizza with Mushrooms, Olives, Bacon and Ham");
         }
 
         [TestMethod, TestCategory("Unit")]
@@ -133,7 +160,30 @@ namespace PizzaShop.Unit.Tests.Products
             string actual = pizza.Description();
 
             // assert
-            actual.Should().Be("Large Pizza with Mushrooms, Bacon, Olives and Ham");
+            actual.Should().Be("Large Pizza with Mushrooms, Olives, Bacon and Ham");
+        }
+
+        [TestMethod, TestCategory("Unit")]
+        public void GivenLargeSizePizzaWithStandardMetaAndPremiumIngredientsInWrongOrder_WhenAskingForDescription_ThenItShouldReturnProperlyOrderedDescription()
+        {
+            // arrange
+            LargePizzaSize pizzaSize = new LargePizzaSize();
+            Pizza basePizza = new Pizza(pizzaSize);
+            IProduct pizza = new Pizza(pizzaSize, new IIngredient[] 
+            { 
+                new Bacon(basePizza),
+                new RoastedGarlic(basePizza), 
+                new Olives(basePizza),
+                new Mushrooms(basePizza),
+                new FetaCheese(basePizza), 
+                new Ham(basePizza)
+            });
+
+            // act
+            string actual = pizza.Description();
+
+            // assert
+            actual.Should().Be("Large Pizza with Olives, Mushrooms, Bacon, Ham, Roasted Garlic and Feta Cheese");
         }
     }
 }

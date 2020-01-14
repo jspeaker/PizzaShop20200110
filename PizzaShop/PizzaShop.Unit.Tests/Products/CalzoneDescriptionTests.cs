@@ -2,6 +2,7 @@ using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PizzaShop.Ingredients;
 using PizzaShop.Ingredients.Meat;
+using PizzaShop.Ingredients.Premium;
 using PizzaShop.Ingredients.Standard;
 using PizzaShop.Products;
 using PizzaShop.Sizes;
@@ -64,6 +65,19 @@ namespace PizzaShop.Unit.Tests.Products
         }
 
         [TestMethod, TestCategory("Unit")]
+        public void GivenFullSizeCalzoneWithFetaCheese_WhenAskingForDescription_ThenItShouldReturnCorrectValue()
+        {
+            // arrange
+            IProduct calzone = new Calzone(new FullCalzoneSize(), new IIngredient[] { new FetaCheese(new Calzone(new FullCalzoneSize())) });
+
+            // act
+            string actual = calzone.Description();
+
+            // assert
+            actual.Should().Be("Full Calzone with Feta Cheese");
+        }
+
+        [TestMethod, TestCategory("Unit")]
         public void GivenFullSizeCalzoneWithMushroomsAndOlives_WhenAskingForDescription_ThenItShouldReturnCorrectValue()
         {
             // arrange
@@ -90,7 +104,7 @@ namespace PizzaShop.Unit.Tests.Products
             string actual = calzone.Description();
 
             // assert
-            actual.Should().Be("Full Calzone with Mushrooms, Bacon and Olives");
+            actual.Should().Be("Full Calzone with Mushrooms, Olives and Bacon");
         }
 
         [TestMethod, TestCategory("Unit")]
@@ -105,7 +119,25 @@ namespace PizzaShop.Unit.Tests.Products
             string actual = calzone.Description();
 
             // assert
-            actual.Should().Be("Half-Size Calzone with Mushrooms, Bacon, Olives and Ham");
+            actual.Should().Be("Half-Size Calzone with Mushrooms, Olives, Bacon and Ham");
+        }
+
+        [TestMethod, TestCategory("Unit")]
+        public void GivenFullSizeCalzoneWithStandardMetaAndPremiumIngredientsInWrongOrder_WhenAskingForDescription_ThenItShouldReturnProperlyOrderedDescription()
+        {
+            // arrange
+            IProduct calzone = new Calzone(new FullCalzoneSize(), new IIngredient[]
+            {
+                new FetaCheese(new Calzone(new FullCalzoneSize())),
+                new Pepperoni(new Calzone(new FullCalzoneSize())), 
+                new Mozzarella(new Calzone(new FullCalzoneSize())), 
+            });
+
+            // act
+            string actual = calzone.Description();
+
+            // assert
+            actual.Should().Be("Full Calzone with Mozzarella, Pepperoni and Feta Cheese");
         }
     }
 }

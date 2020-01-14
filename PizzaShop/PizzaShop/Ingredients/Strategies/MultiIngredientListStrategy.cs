@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 
 namespace PizzaShop.Ingredients.Strategies
@@ -19,6 +20,7 @@ namespace PizzaShop.Ingredients.Strategies
         {
             if (_ingredients.Length < 2) return _nextStrategy.Formatted();
 
+            Array.Sort(_ingredients);
             string[] ingredientNames = _ingredients.Select(i => i.Name()).Select(i => i.ToString()).ToArray();
             return $" with {string.Join(", ", ingredientNames, 0, ingredientNames.Length - 1)} and {ingredientNames.Last()}";
         }

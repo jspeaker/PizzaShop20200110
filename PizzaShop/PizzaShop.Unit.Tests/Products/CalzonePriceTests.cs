@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PizzaShop.Ingredients;
 using PizzaShop.Ingredients.Meat;
+using PizzaShop.Ingredients.Premium;
 using PizzaShop.Ingredients.Standard;
 using PizzaShop.Products;
 using PizzaShop.Sizes;
@@ -83,6 +84,38 @@ namespace PizzaShop.Unit.Tests.Products
         }
 
         [TestMethod, TestCategory("Unit")]
+        public void GivenFullSizeCalzoneWithOneMeatIngredient_WhenAskingForPrice_ThenItShouldReturnCorrectValue()
+        {
+            // arrange
+            IProduct calzone = new Calzone(new FullCalzoneSize(), new IIngredient[]
+            {
+                new Pepperoni(new Calzone(new FullCalzoneSize())), 
+            });
+
+            // act
+            decimal actual = calzone.Price();
+
+            // assert
+            actual.Should().Be(16.1m);
+        }
+
+        [TestMethod, TestCategory("Unit")]
+        public void GivenFullSizeCalzoneWithOnePremiumIngredient_WhenAskingForPrice_ThenItShouldReturnCorrectValue()
+        {
+            // arrange
+            IProduct calzone = new Calzone(new FullCalzoneSize(), new IIngredient[]
+            {
+                new RoastedGarlic(new Calzone(new FullCalzoneSize())), 
+            });
+
+            // act
+            decimal actual = calzone.Price();
+
+            // assert
+            actual.Should().Be(16.8m);
+        }
+
+        [TestMethod, TestCategory("Unit")]
         public void GivenHalfSizeCalzoneWithTwoStandardIngredients_WhenAskingForPrice_ThenItShouldReturnCorrectValue()
         {
             // arrange
@@ -136,7 +169,7 @@ namespace PizzaShop.Unit.Tests.Products
         }
 
         [TestMethod, TestCategory("Unit")]
-        public void GivenFullSizeCalzoneWithTwoStandardIngredientsAAndTwoMeatIngredients_WhenAskingForPrice_ThenItShouldReturnCorrectValue()
+        public void GivenFullSizeCalzoneWithTwoStandardIngredientsAndTwoMeatIngredients_WhenAskingForPrice_ThenItShouldReturnCorrectValue()
         {
             // arrange
             IProduct calzone = new Calzone(new FullCalzoneSize(), new IIngredient[]
@@ -152,6 +185,27 @@ namespace PizzaShop.Unit.Tests.Products
 
             // assert
             actual.Should().Be(21.0m);
+        }
+
+        [TestMethod, TestCategory("Unit")]
+        public void GivenFullSizeCalzoneWithTwoStandardIngredientsTwoMeatIngredientsAndTwoPremiumIngredients_WhenAskingForPrice_ThenItShouldReturnCorrectValue()
+        {
+            // arrange
+            IProduct calzone = new Calzone(new FullCalzoneSize(), new IIngredient[]
+            {
+                new Mushrooms(new Calzone(new FullCalzoneSize())),
+                new Olives(new Calzone(new FullCalzoneSize())),
+                new Bacon(new Calzone(new FullCalzoneSize())),
+                new Ham(new Calzone(new FullCalzoneSize())),
+                new RoastedGarlic(new Calzone(new FullCalzoneSize())), 
+                new FetaCheese(new Calzone(new FullCalzoneSize())), 
+            });
+
+            // act
+            decimal actual = calzone.Price();
+
+            // assert
+            actual.Should().Be(26.6m);
         }
     }
 }

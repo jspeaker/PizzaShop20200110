@@ -12,7 +12,7 @@ namespace PizzaShop.Unit.Tests.Ingredients
     public class MeatIngredientsTests
     {
         [TestMethod, TestCategory("Unit")]
-        public void GivenStandardIngredientOnPersonalPizza_WhenAskingForPrice_ThenItShouldReturnFifteenPercentOfThePizzaPrice()
+        public void GivenMeatIngredientOnPersonalPizza_WhenAskingForPrice_ThenItShouldReturnFifteenPercentOfThePizzaPrice()
         {
             // arrange
             IIngredient ingredient = new MeatIngredientTestImplementation(new Pizza(new PersonalPizzaSize()));
@@ -25,7 +25,7 @@ namespace PizzaShop.Unit.Tests.Ingredients
         }
 
         [TestMethod, TestCategory("Unit")]
-        public void GivenStandardIngredientOnLargePizza_WhenAskingForPrice_ThenItShouldReturnFifteenPercentOfThePizzaPrice()
+        public void GivenMeatIngredientOnLargePizza_WhenAskingForPrice_ThenItShouldReturnFifteenPercentOfThePizzaPrice()
         {
             // arrange
             IIngredient ingredient = new MeatIngredientTestImplementation(new Pizza(new LargePizzaSize()));

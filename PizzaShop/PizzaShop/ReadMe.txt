@@ -18,6 +18,7 @@
 			"size": "Medium",
 			"ingredients": 
 			[
+				"Feta Cheese",
 				"Bacon",
 				"Olives",
 				"Mozzarella"
@@ -47,7 +48,9 @@
 			"size": "Half-Size",
 			"ingredients": 
 			[
+				"Feta Cheese",
 				"Pepperoni",
+				"Roasted Garlic",
 				"Mushrooms",
 				"Mozzarella"
 			]
