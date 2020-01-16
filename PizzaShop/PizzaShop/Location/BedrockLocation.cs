@@ -2,5 +2,8 @@
 
 namespace PizzaShop.Location
 {
-    public class BedrockLocation : Location<LzyCurrency> { }
+    public class BedrockLocation : Location<LzyCurrency>
+    {
+        public override bool IsLocation(LocationName locationName) => locationName == LocationName.Bedrock;
+    }
 }

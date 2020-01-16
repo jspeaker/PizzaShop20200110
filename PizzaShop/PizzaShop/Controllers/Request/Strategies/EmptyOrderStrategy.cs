@@ -1,4 +1,4 @@
-﻿using PizzaShop.Franchise;
+﻿using PizzaShop.Location;
 using PizzaShop.Products;
 using System.Collections.Generic;
 
@@ -10,6 +10,6 @@ namespace PizzaShop.Controllers.Request.Strategies
 
         public EmptyOrderStrategy(List<IProduct> products) => _products = products;
 
-        public List<IProduct> Add(ProductRequest productRequest, LocationName locationName) => _products;
+        public List<IProduct> Add(ProductRequest productRequest, ILocation location) => _products;
     }
 }

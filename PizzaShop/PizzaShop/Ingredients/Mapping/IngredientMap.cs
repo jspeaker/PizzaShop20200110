@@ -1,6 +1,6 @@
-﻿using PizzaShop.Products;
+﻿using PizzaShop.Location;
+using PizzaShop.Products;
 using System;
-using PizzaShop.Franchise;
 
 namespace PizzaShop.Ingredients.Mapping
 {
@@ -12,10 +12,10 @@ namespace PizzaShop.Ingredients.Mapping
 
         private IngredientMap(Ingredients ingredients) => _ingredients = ingredients;
 
-        public IIngredient DomainIngredient(string name, IProduct product, LocationName locationName)
+        public IIngredient DomainIngredient(string name, IProduct product, ILocation location)
         {
             IIngredient ingredient = (IIngredient) Activator.CreateInstance(_ingredients.Types[name], product);
-            if (!ingredient.IsAvailableAt(locationName)) throw new Exception();
+            if (!ingredient.IsAvailableAt(location)) throw new Exception();
 
             return ingredient;
         }

@@ -1,4 +1,4 @@
-﻿using PizzaShop.Franchise;
+﻿using PizzaShop.Location;
 using PizzaShop.PrimitiveConcepts;
 
 namespace PizzaShop.Ingredients
@@ -18,7 +18,7 @@ namespace PizzaShop.Ingredients
 
         public Text Name() => _name;
 
-        public virtual bool IsAvailableAt(LocationName locationName) => true;
+        public virtual bool IsAvailableAt(ILocation location) => true;
 
         public int CompareTo(object obj)
         {

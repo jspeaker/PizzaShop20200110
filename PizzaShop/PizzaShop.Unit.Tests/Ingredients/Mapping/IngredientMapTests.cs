@@ -1,12 +1,12 @@
 ﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PizzaShop.Franchise;
 using PizzaShop.Ingredients;
 using PizzaShop.Ingredients.Mapping;
 using PizzaShop.Ingredients.Meat;
 using PizzaShop.Ingredients.Meat.Texts;
 using PizzaShop.Ingredients.Premium.Texts;
 using PizzaShop.Ingredients.Standard.Texts;
+using PizzaShop.Location;
 using PizzaShop.Products;
 using System;
 
@@ -23,7 +23,7 @@ namespace PizzaShop.Unit.Tests.Ingredients.Mapping
             IngredientMap ingredientMap = new IngredientMap();
 
             // act
-            IIngredient mappedIngredient = ingredientMap.DomainIngredient(name, new Pizza(), LocationName.Bedrock);
+            IIngredient mappedIngredient = ingredientMap.DomainIngredient(name, new Pizza(), new BedrockLocation());
 
             // assert
             mappedIngredient.Name().ToString().Should().BeEquivalentTo(new OlivesName());
@@ -37,7 +37,7 @@ namespace PizzaShop.Unit.Tests.Ingredients.Mapping
             IngredientMap ingredientMap = new IngredientMap();
 
             // act
-            IIngredient mappedIngredient = ingredientMap.DomainIngredient(name, new Pizza(), LocationName.Springfield);
+            IIngredient mappedIngredient = ingredientMap.DomainIngredient(name, new Pizza(), new SpringfieldLocation());
 
             // assert
             mappedIngredient.Name().ToString().Should().BeEquivalentTo(new CrispyHamName());
@@ -52,7 +52,7 @@ namespace PizzaShop.Unit.Tests.Ingredients.Mapping
             IngredientMap ingredientMap = new IngredientMap();
 
             // act
-            Action action = () => ingredientMap.DomainIngredient(name, new Pizza(), LocationName.Bedrock);
+            Action action = () => ingredientMap.DomainIngredient(name, new Pizza(), new BedrockLocation());
 
             // assert
             action.Should().NotThrow<Exception>();
@@ -66,7 +66,7 @@ namespace PizzaShop.Unit.Tests.Ingredients.Mapping
             IngredientMap ingredientMap = new IngredientMap();
 
             // act
-            Action action = () => ingredientMap.DomainIngredient(name, new Pizza(), LocationName.Springfield);
+            Action action = () => ingredientMap.DomainIngredient(name, new Pizza(), new SpringfieldLocation());
 
             // assert
             action.Should().Throw<Exception>();
@@ -80,7 +80,7 @@ namespace PizzaShop.Unit.Tests.Ingredients.Mapping
             IngredientMap ingredientMap = new IngredientMap();
 
             // act
-            Action action = () => ingredientMap.DomainIngredient(name, new Pizza(), LocationName.Springfield);
+            Action action = () => ingredientMap.DomainIngredient(name, new Pizza(), new SpringfieldLocation());
 
             // assert
             action.Should().NotThrow<Exception>();
@@ -94,7 +94,7 @@ namespace PizzaShop.Unit.Tests.Ingredients.Mapping
             IngredientMap ingredientMap = new IngredientMap();
 
             // act
-            Action action = () => ingredientMap.DomainIngredient(name, new Pizza(), LocationName.Bedrock);
+            Action action = () => ingredientMap.DomainIngredient(name, new Pizza(), new BedrockLocation());
 
             // assert
             action.Should().Throw<Exception>();
@@ -108,7 +108,7 @@ namespace PizzaShop.Unit.Tests.Ingredients.Mapping
             IngredientMap ingredientMap = new IngredientMap();
 
             // act
-            IIngredient mappedIngredient = ingredientMap.DomainIngredient(name, new Pizza(), LocationName.Bedrock);
+            IIngredient mappedIngredient = ingredientMap.DomainIngredient(name, new Pizza(), new BedrockLocation());
 
             // assert
             mappedIngredient.Name().ToString().Should().BeEquivalentTo(new RoastedGarlicName());
@@ -122,7 +122,7 @@ namespace PizzaShop.Unit.Tests.Ingredients.Mapping
             IngredientMap ingredientMap = new IngredientMap();
 
             // act
-            Action action = () => ingredientMap.DomainIngredient(name, new Pizza(), LocationName.Springfield);
+            Action action = () => ingredientMap.DomainIngredient(name, new Pizza(), new SpringfieldLocation());
 
             // assert
             action.Should().Throw<Exception>();
@@ -136,7 +136,7 @@ namespace PizzaShop.Unit.Tests.Ingredients.Mapping
             IngredientMap ingredientMap = new IngredientMap();
 
             // act
-            Action action = () => ingredientMap.DomainIngredient(name, new Pizza(), LocationName.Bedrock);
+            Action action = () => ingredientMap.DomainIngredient(name, new Pizza(), new BedrockLocation());
 
             // assert
             action.Should().Throw<Exception>();

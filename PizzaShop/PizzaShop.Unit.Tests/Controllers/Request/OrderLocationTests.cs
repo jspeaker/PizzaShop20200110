@@ -33,7 +33,63 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
             string actual = order.Invoice();
 
             // assert
-            actual.Should().Be("Mini Pizza with Mushrooms\n9.90");
+            actual.Should().Be("Mini Pizza with Mushrooms\n$9.90");
+        }
+
+        [TestMethod, TestCategory("Unit")]
+        public void GivenBedrockLocation_WhenAskingForMiniSizePizza_ThenItShouldReturnCorrectValue()
+        {
+            // arrange
+            Order order = new Order
+            {
+                Location = "Bedrock",
+                Products = new[]
+                {
+                    new ProductRequest
+                    {
+                        Name = "Pizza",
+                        Size = "Mini",
+                        Ingredients = new []
+                        {
+                            "Mushrooms"
+                        }
+                    }
+                }
+            };
+
+            // act
+            string actual = order.Invoice();
+
+            // assert
+            actual.Should().Be("Mini Pizza with Mushrooms\n$9.90");
+        }
+
+        [TestMethod, TestCategory("Unit")]
+        public void GivenBricksburgLocation_WhenAskingForMiniSizePizza_ThenItShouldReturnCorrectValue()
+        {
+            // arrange
+            Order order = new Order
+            {
+                Location = "Bricksburg",
+                Products = new[]
+                {
+                    new ProductRequest
+                    {
+                        Name = "Pizza",
+                        Size = "Mini",
+                        Ingredients = new []
+                        {
+                            "Mushrooms"
+                        }
+                    }
+                }
+            };
+
+            // act
+            string actual = order.Invoice();
+
+            // assert
+            actual.Should().Be("Mini Pizza with Mushrooms\n17,33 &");
         }
 
         [TestMethod, TestCategory("Unit")]
@@ -61,7 +117,7 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
             string actual = order.Invoice();
 
             // assert
-            actual.Should().Be("Mini Pizza with Crispy Ham\n10.350");
+            actual.Should().Be("Mini Pizza with Crispy Ham\n$10.35");
         }
 
         [TestMethod, TestCategory("Unit")]

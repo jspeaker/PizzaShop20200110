@@ -1,5 +1,5 @@
-﻿using PizzaShop.Franchise;
-using PizzaShop.Ingredients.Mapping;
+﻿using PizzaShop.Ingredients.Mapping;
+using PizzaShop.Location;
 using PizzaShop.Products;
 using PizzaShop.Products.Descriptions;
 using PizzaShop.Sizes;
@@ -26,12 +26,12 @@ namespace PizzaShop.Controllers.Request.Strategies
             _nextStrategy = nextStrategy;
         }
 
-        public List<IProduct> Add(ProductRequest productRequest, LocationName locationName)
+        public List<IProduct> Add(ProductRequest productRequest, ILocation location)
         {
-            if (!productRequest.Name.Equals(new CalzoneProductName())) return _nextStrategy.Add(productRequest, locationName);
+            if (!productRequest.Name.Equals(new CalzoneProductName())) return _nextStrategy.Add(productRequest, location);
 
             IProductSize size = _sizeMap.DomainSize(productRequest.Size);
-            _products.Add(new Calzone(size, productRequest.Ingredients.Select(i => _ingredientMap.DomainIngredient(i, new Calzone(size), locationName)).ToArray()));
+            _products.Add(new Calzone(size, productRequest.Ingredients.Select(i => _ingredientMap.DomainIngredient(i, new Calzone(size), location)).ToArray()));
             return _products;
         }
     }

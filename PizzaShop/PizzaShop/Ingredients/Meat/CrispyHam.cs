@@ -1,5 +1,5 @@
-﻿using PizzaShop.Franchise;
-using PizzaShop.Ingredients.Meat.Texts;
+﻿using PizzaShop.Ingredients.Meat.Texts;
+using PizzaShop.Location;
 using PizzaShop.Products;
 
 namespace PizzaShop.Ingredients.Meat
@@ -8,6 +8,6 @@ namespace PizzaShop.Ingredients.Meat
     {
         public CrispyHam(IProduct product) : base(product, new CrispyHamName()) { }
 
-        public override bool IsAvailableAt(LocationName locationName) => locationName == LocationName.Springfield;
+        public override bool IsAvailableAt(ILocation location) => location.IsLocation(LocationName.Springfield);
     }
 }

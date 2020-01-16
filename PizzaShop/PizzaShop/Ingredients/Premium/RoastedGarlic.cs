@@ -1,5 +1,5 @@
-﻿using PizzaShop.Franchise;
-using PizzaShop.Ingredients.Premium.Texts;
+﻿using PizzaShop.Ingredients.Premium.Texts;
+using PizzaShop.Location;
 using PizzaShop.Products;
 
 namespace PizzaShop.Ingredients.Premium
@@ -8,6 +8,6 @@ namespace PizzaShop.Ingredients.Premium
     {
         public RoastedGarlic(IProduct product) : base(product, new RoastedGarlicName()) { }
 
-        public override bool IsAvailableAt(LocationName locationName) => locationName != LocationName.Springfield;
+        public override bool IsAvailableAt(ILocation locationName) => !locationName.IsLocation(LocationName.Springfield);
     }
 }

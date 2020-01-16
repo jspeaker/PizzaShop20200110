@@ -1,5 +1,6 @@
 ﻿using PizzaShop.Controllers.Request.Strategies;
-using PizzaShop.Franchise;
+using PizzaShop.Location;
+using PizzaShop.Location.Mapping;
 using PizzaShop.Products;
 using System;
 using System.Collections.Generic;
@@ -29,9 +30,13 @@ namespace PizzaShop.Controllers.Request
         // ReSharper disable once InconsistentNaming
         public string Invoice()
         {
-            foreach (ProductRequest product in Products) _products = _orderStrategy.Add(product, Enum.Parse<LocationName>(Location));
+            ILocation domainLocation = new LocationMap(Enum.Parse<LocationName>(Location)).DomainLocation();
+            foreach (ProductRequest product in Products)
+            {
+                _products = _orderStrategy.Add(product, domainLocation);
+            }
 
-            return $"{string.Join("\n\n", _products.Select(p => p.Description() + "\n" + (decimal) p.Price()))}";
+            return $"{string.Join("\n\n", _products.Select(p => p.Description() + "\n" + domainLocation.LocalizedPrice(p.Price())))}";
         }
     }
 }
