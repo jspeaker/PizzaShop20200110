@@ -26,11 +26,12 @@ namespace PizzaShop.Controllers.Request
             _orderStrategy = orderStrategy;
         }
 
+        // ReSharper disable once InconsistentNaming
         public string Invoice()
         {
-            foreach (ProductRequest product in Products) _products = _orderStrategy.Add(product, Enum.Parse<Location>(Location));
+            foreach (ProductRequest product in Products) _products = _orderStrategy.Add(product, Enum.Parse<LocationName>(Location));
 
-            return $"{string.Join("\n\n", _products.Select(p => p.Description() + "\n" + p.Price()))}";
+            return $"{string.Join("\n\n", _products.Select(p => p.Description() + "\n" + (decimal) p.Price()))}";
         }
     }
 }

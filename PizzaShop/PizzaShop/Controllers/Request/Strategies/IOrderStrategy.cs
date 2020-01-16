@@ -6,6 +6,6 @@ namespace PizzaShop.Controllers.Request.Strategies
 {
     public interface IOrderStrategy
     {
-        List<IProduct> Add(ProductRequest productRequest, Location location);
+        List<IProduct> Add(ProductRequest productRequest, LocationName locationName);
     }
 }

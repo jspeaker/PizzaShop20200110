@@ -1,7 +1,7 @@
-﻿Sample post bodies. Locations are "Headquarters" and "ExpansionOne"
+﻿Sample post bodies. Locations are "Bedrock" and "Springfield"
 
 {
-  "location": "ExpansionOne",
+  "location": "Springfield",
   "products": 
   [
     {
@@ -62,7 +62,7 @@
 }
 
 {
-  "location": "Headquarters",
+  "location": "Bedrock",
   "products": 
   [
     {

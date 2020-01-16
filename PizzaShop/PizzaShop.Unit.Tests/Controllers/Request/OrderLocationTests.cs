@@ -9,12 +9,12 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
     public class OrderLocationTests
     {
         [TestMethod, TestCategory("Unit")]
-        public void GivenNewLocation_WhenAskingForMiniSizePizza_ThenItShouldReturnCorrectValue()
+        public void GivenSpringfieldLocation_WhenAskingForMiniSizePizza_ThenItShouldReturnCorrectValue()
         {
             // arrange
             Order order = new Order
             {
-                Location = "ExpansionOne",
+                Location = "Springfield",
                 Products = new[]
                 {
                     new ProductRequest
@@ -37,12 +37,12 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
         }
 
         [TestMethod, TestCategory("Unit")]
-        public void GivenNewLocation_WhenAskingForMiniSizePizzaWithCrispyHam_ThenItShouldReturnCorrectValue()
+        public void GivenSpringfieldLocation_WhenAskingForMiniSizePizzaWithCrispyHam_ThenItShouldReturnCorrectValue()
         {
             // arrange
             Order order = new Order
             {
-                Location = "ExpansionOne",
+                Location = "Springfield",
                 Products = new[]
                 {
                     new ProductRequest
@@ -65,12 +65,12 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
         }
 
         [TestMethod, TestCategory("Unit")]
-        public void GivenNewLocation_WhenAskingForMiniSizePizza_ThenItShouldNotThrow()
+        public void GivenSpringfieldLocation_WhenAskingForMiniSizePizza_ThenItShouldNotThrow()
         {
             // arrange
             Order order = new Order
             {
-                Location = "ExpansionOne",
+                Location = "Springfield",
                 Products = new[]
                 {
                     new ProductRequest
@@ -93,12 +93,12 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
         }
 
         [TestMethod, TestCategory("Unit")]
-        public void GivenNewLocation_WhenAskingForRoastedGarlic_ThenItShouldThrow()
+        public void GivenSpringfieldLocation_WhenAskingForRoastedGarlic_ThenItShouldThrow()
         {
             // arrange
             Order order = new Order
             {
-                Location = "ExpansionOne",
+                Location = "Springfield",
                 Products = new[]
                 {
                     new ProductRequest
@@ -121,12 +121,12 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
         }
 
         [TestMethod, TestCategory("Unit")]
-        public void GivenHeadquartersLocation_WhenAskingForRoastedGarlic_ThenItShouldNotThrow()
+        public void GivenBedrockLocation_WhenAskingForRoastedGarlic_ThenItShouldNotThrow()
         {
             // arrange
             Order order = new Order
             {
-                Location = "Headquarters",
+                Location = "Bedrock",
                 Products = new[]
                 {
                     new ProductRequest
@@ -149,12 +149,12 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
         }
 
         [TestMethod, TestCategory("Unit")]
-        public void GivenHeadquartersLocation_WhenAskingForAsiagoCheese_ThenItShouldThrow()
+        public void GivenBedrockLocation_WhenAskingForAsiagoCheese_ThenItShouldThrow()
         {
             // arrange
             Order order = new Order
             {
-                Location = "Headquarters",
+                Location = "Bedrock",
                 Products = new[]
                 {
                     new ProductRequest
@@ -177,12 +177,12 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
         }
 
         [TestMethod, TestCategory("Unit")]
-        public void GivenNewLocation_WhenAskingForAsiagoCheese_ThenItShouldNotThrow()
+        public void GivenSpringfieldLocation_WhenAskingForAsiagoCheese_ThenItShouldNotThrow()
         {
             // arrange
             Order order = new Order
             {
-                Location = "Headquarters",
+                Location = "Springfield",
                 Products = new[]
                 {
                     new ProductRequest

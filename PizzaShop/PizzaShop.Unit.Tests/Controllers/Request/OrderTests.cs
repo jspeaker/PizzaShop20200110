@@ -14,6 +14,7 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
             // arrange
             Order order = new Order
             {
+                Location = "Bedrock",
                 Products = new []
                 {
                     new ProductRequest
@@ -42,6 +43,7 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
             // arrange
             Order order = new Order
             {
+                Location = "Bedrock",
                 Products = new[]
                 {
                     new ProductRequest
@@ -83,6 +85,7 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
             // arrange
             Order order = new Order
             {
+                Location = "Bedrock",
                 Products = new[]
                 {
                     new ProductRequest
@@ -125,6 +128,7 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
             // arrange
             Order order = new Order
             {
+                Location = "Bedrock",
                 Products = new[]
                 {
                     new ProductRequest
@@ -166,6 +170,7 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
             // arrange
             Order order = new Order
             {
+                Location = "Bedrock",
                 Products = new []
                 {
                     new ProductRequest
@@ -194,6 +199,7 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
             // arrange
             Order order = new Order
             {
+                Location = "Bedrock",
                 Products = new []
                 {
                     new ProductRequest

@@ -26,12 +26,12 @@ namespace PizzaShop.Controllers.Request.Strategies
             _nextStrategy = nextStrategy;
         }
 
-        public List<IProduct> Add(ProductRequest productRequest, Location location)
+        public List<IProduct> Add(ProductRequest productRequest, LocationName locationName)
         {
-            if (!productRequest.Name.Equals(new PizzaProductName())) return _nextStrategy.Add(productRequest, location);
+            if (!productRequest.Name.Equals(new PizzaProductName())) return _nextStrategy.Add(productRequest, locationName);
 
             IProductSize size = _sizeMap.DomainSize(productRequest.Size);
-            _products.Add(new Pizza(size, productRequest.Ingredients.Select(i => _ingredientMap.DomainIngredient(i, new Pizza(size), location)).ToArray()));
+            _products.Add(new Pizza(size, productRequest.Ingredients.Select(i => _ingredientMap.DomainIngredient(i, new Pizza(size), locationName)).ToArray()));
             return _products;
         }
     }

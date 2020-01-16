@@ -8,6 +8,6 @@ namespace PizzaShop.Ingredients.Standard
     {
         public AsiagoCheese(IProduct product) : base(product, new AsiagoCheeseName()) { }
 
-        public override bool IsAvailableAt(Location location) => location == Location.ExpansionOne;
+        public override bool IsAvailableAt(LocationName locationName) => locationName == LocationName.Springfield;
     }
 }

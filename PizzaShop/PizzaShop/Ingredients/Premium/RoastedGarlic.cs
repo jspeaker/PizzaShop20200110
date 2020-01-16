@@ -8,6 +8,6 @@ namespace PizzaShop.Ingredients.Premium
     {
         public RoastedGarlic(IProduct product) : base(product, new RoastedGarlicName()) { }
 
-        public override bool IsAvailableAt(Location location) => location != Location.ExpansionOne;
+        public override bool IsAvailableAt(LocationName locationName) => locationName != LocationName.Springfield;
     }
 }

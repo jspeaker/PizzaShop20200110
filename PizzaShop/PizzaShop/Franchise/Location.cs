@@ -4,9 +4,10 @@ using Newtonsoft.Json.Converters;
 namespace PizzaShop.Franchise
 {
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum Location
+    public enum LocationName
     {
-        Headquarters,
-        ExpansionOne
+        Bedrock,
+        Springfield,
+        Bricksburg
     }
 }

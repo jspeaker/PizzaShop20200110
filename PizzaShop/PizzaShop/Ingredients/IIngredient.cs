@@ -8,6 +8,6 @@ namespace PizzaShop.Ingredients
     {
         Money Price();
         Text Name();
-        bool IsAvailableAt(Location location);
+        bool IsAvailableAt(LocationName locationName);
     }
 }

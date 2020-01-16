@@ -26,11 +26,16 @@ namespace PizzaShop.Products
 
         public string Description() => $"{_size} {_productName}{_ingredientListStrategy.Formatted()}";
 
-        public decimal Price()
+        public Money Price()
         {
             if (_ingredients == null || !_ingredients.Any()) return _size.Price();
 
-            return _size.Price() + _ingredients.Select(i => i.Price()).Sum(p => Convert.ToDecimal(p));
+            return new CalculatedPrice(_size.Price() + _ingredients.Select(i => i.Price()).Sum(p => Convert.ToDecimal(p)));
         }
+    }
+
+    public class CalculatedPrice : Money
+    {
+        public CalculatedPrice(decimal value) : base(value) { }
     }
 }

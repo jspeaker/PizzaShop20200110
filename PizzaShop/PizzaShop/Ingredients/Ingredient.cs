@@ -18,7 +18,7 @@ namespace PizzaShop.Ingredients
 
         public Text Name() => _name;
 
-        public virtual bool IsAvailableAt(Location location) => true;
+        public virtual bool IsAvailableAt(LocationName locationName) => true;
 
         public int CompareTo(object obj)
         {

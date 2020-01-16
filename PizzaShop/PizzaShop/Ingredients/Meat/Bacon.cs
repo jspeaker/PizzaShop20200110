@@ -8,6 +8,6 @@ namespace PizzaShop.Ingredients.Meat
     {
         public Bacon(IProduct product) : base(product, new BaconName()) { }
 
-        public override bool IsAvailableAt(Location location) => location != Location.ExpansionOne;
+        public override bool IsAvailableAt(LocationName locationName) => locationName != LocationName.Springfield;
     }
 }
