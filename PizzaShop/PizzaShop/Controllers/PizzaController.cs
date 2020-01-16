@@ -8,6 +8,6 @@ namespace PizzaShop.Controllers
     public class PizzaController : ControllerBase
     {
         [HttpPost]
-        public string Post(Order order) => order.Invoice();
+        public ActionResult Post(Order order) => Ok(order.Invoice());
     }
 }

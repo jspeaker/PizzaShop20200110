@@ -1,6 +1,8 @@
 ﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PizzaShop.Controllers.Request;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace PizzaShop.Unit.Tests.Controllers.Request
 {
@@ -30,10 +32,14 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
             };
 
             // act
-            string invoice = order.Invoice();
+            Invoice invoice = order.Invoice();
 
             // assert
-            invoice.Should().Be("Half-Size Calzone with Mushrooms and Pepperoni\n$10.00");
+            Privateer privateer = new Privateer();
+            List<LineItem> lineItems = privateer.Field<List<LineItem>>(invoice, "_lineItems");
+            lineItems.Should().HaveCount(1);
+            privateer.Field<string>(lineItems[0], "_description").Should().Be("Half-Size Calzone with Mushrooms and Pepperoni");
+            privateer.Field<string>(lineItems[0], "_price").Should().Be("$10.00");
         }
 
         [TestMethod, TestCategory("Unit")]
@@ -72,10 +78,14 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
             };
 
             // act
-            string invoice = order.Invoice();
+            Invoice invoice = order.Invoice();
 
             // assert
-            invoice.Should().Be("Half-Size Calzone with Pepperoni\n$9.20");
+            Privateer privateer = new Privateer();
+            List<LineItem> lineItems = privateer.Field<List<LineItem>>(invoice, "_lineItems");
+            lineItems.Should().HaveCount(1);
+            privateer.Field<string>(lineItems[0], "_description").Should().Be("Half-Size Calzone with Pepperoni");
+            privateer.Field<string>(lineItems[0], "_price").Should().Be("$9.20");
         }
 
         [TestMethod, TestCategory("Unit")]
@@ -114,10 +124,14 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
             };
 
             // act
-            string invoice = order.Invoice();
+            Invoice invoice = order.Invoice();
 
             // assert
-            invoice.Should().Be("Full Calzone with Pepperoni\n$16.10");
+            Privateer privateer = new Privateer();
+            List<LineItem> lineItems = privateer.Field<List<LineItem>>(invoice, "_lineItems");
+            lineItems.Should().HaveCount(1);
+            privateer.Field<string>(lineItems[0], "_description").Should().Be("Full Calzone with Pepperoni");
+            privateer.Field<string>(lineItems[0], "_price").Should().Be("$16.10");
         }
 
 
@@ -157,10 +171,14 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
             };
 
             // act
-            string invoice = order.Invoice();
+            Invoice invoice = order.Invoice();
 
             // assert
-            invoice.Should().Be("Medium Pizza with Pepperoni\n$13.80");
+            Privateer privateer = new Privateer();
+            List<LineItem> lineItems = privateer.Field<List<LineItem>>(invoice, "_lineItems");
+            lineItems.Should().HaveCount(1);
+            privateer.Field<string>(lineItems[0], "_description").Should().Be("Medium Pizza with Pepperoni");
+            privateer.Field<string>(lineItems[0], "_price").Should().Be("$13.80");
         }
 
         [TestMethod, TestCategory("Unit")]
@@ -186,10 +204,14 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
             };
 
             // act
-            string invoice = order.Invoice();
+            Invoice invoice = order.Invoice();
 
             // assert
-            invoice.Should().Be("Personal Pizza with Mushrooms and Pepperoni\n$11.25");
+            Privateer privateer = new Privateer();
+            List<LineItem> lineItems = privateer.Field<List<LineItem>>(invoice, "_lineItems");
+            lineItems.Should().HaveCount(1);
+            privateer.Field<string>(lineItems[0], "_description").Should().Be("Personal Pizza with Mushrooms and Pepperoni");
+            privateer.Field<string>(lineItems[0], "_price").Should().Be("$11.25");
         }
 
         [TestMethod, TestCategory("Unit")]
@@ -228,10 +250,14 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
             };
 
             // act
-            string invoice = order.Invoice();
+            Invoice invoice = order.Invoice();
 
             // assert
-            invoice.Should().Be("Personal Pizza with Pepperoni\n$10.35");
+            Privateer privateer = new Privateer();
+            List<LineItem> lineItems = privateer.Field<List<LineItem>>(invoice, "_lineItems");
+            lineItems.Should().HaveCount(1);
+            privateer.Field<string>(lineItems[0], "_description").Should().Be("Personal Pizza with Pepperoni");
+            privateer.Field<string>(lineItems[0], "_price").Should().Be("$10.35");
         }
 
         [TestMethod, TestCategory("Unit")]
@@ -270,10 +296,16 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
             };
 
             // act
-            string invoice = order.Invoice();
+            Invoice invoice = order.Invoice();
 
             // assert
-            invoice.Should().Be("Personal Pizza with Pepperoni\n18,11 &");
+            Privateer privateer = new Privateer();
+            List<LineItem> lineItems = privateer.Field<List<LineItem>>(invoice, "_lineItems");
+            lineItems.Should().HaveCount(1);
+            privateer.Field<string>(lineItems[0], "_description").Should().Be("Personal Pizza with Pepperoni");
+            privateer.Field<string>(lineItems[0], "_price").Should().Be("18,11 &");
+
+            string serializedInvoice = JsonConvert.SerializeObject(invoice);
         }
     }
 }

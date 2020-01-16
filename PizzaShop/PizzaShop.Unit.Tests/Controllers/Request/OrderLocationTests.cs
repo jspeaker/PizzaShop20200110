@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PizzaShop.Controllers.Request;
 using System;
+using System.Collections.Generic;
 
 namespace PizzaShop.Unit.Tests.Controllers.Request
 {
@@ -30,10 +31,14 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
             };
 
             // act
-            string actual = order.Invoice();
+            Invoice invoice = order.Invoice();
 
             // assert
-            actual.Should().Be("Mini Pizza with Mushrooms\n$9.90");
+            Privateer privateer = new Privateer();
+            List<LineItem> lineItems = privateer.Field<List<LineItem>>(invoice, "_lineItems");
+            lineItems.Should().HaveCount(1);
+            privateer.Field<string>(lineItems[0], "_description").Should().Be("Mini Pizza with Mushrooms");
+            privateer.Field<string>(lineItems[0], "_price").Should().Be("$9.90");
         }
 
         [TestMethod, TestCategory("Unit")]
@@ -48,7 +53,7 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
                     new ProductRequest
                     {
                         Name = "Pizza",
-                        Size = "Mini",
+                        Size = "Personal",
                         Ingredients = new []
                         {
                             "Mushrooms"
@@ -58,10 +63,14 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
             };
 
             // act
-            string actual = order.Invoice();
+            Invoice invoice = order.Invoice();
 
             // assert
-            actual.Should().Be("Mini Pizza with Mushrooms\n$9.90");
+            Privateer privateer = new Privateer();
+            List<LineItem> lineItems = privateer.Field<List<LineItem>>(invoice, "_lineItems");
+            lineItems.Should().HaveCount(1);
+            privateer.Field<string>(lineItems[0], "_description").Should().Be("Personal Pizza with Mushrooms");
+            privateer.Field<string>(lineItems[0], "_price").Should().Be("$9.90");
         }
 
         [TestMethod, TestCategory("Unit")]
@@ -76,7 +85,7 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
                     new ProductRequest
                     {
                         Name = "Pizza",
-                        Size = "Mini",
+                        Size = "Personal",
                         Ingredients = new []
                         {
                             "Mushrooms"
@@ -86,10 +95,14 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
             };
 
             // act
-            string actual = order.Invoice();
+            Invoice invoice = order.Invoice();
 
             // assert
-            actual.Should().Be("Mini Pizza with Mushrooms\n17,33 &");
+            Privateer privateer = new Privateer();
+            List<LineItem> lineItems = privateer.Field<List<LineItem>>(invoice, "_lineItems");
+            lineItems.Should().HaveCount(1);
+            privateer.Field<string>(lineItems[0], "_description").Should().Be("Personal Pizza with Mushrooms");
+            privateer.Field<string>(lineItems[0], "_price").Should().Be("17,33 &");
         }
 
         [TestMethod, TestCategory("Unit")]
@@ -114,10 +127,14 @@ namespace PizzaShop.Unit.Tests.Controllers.Request
             };
 
             // act
-            string actual = order.Invoice();
+            Invoice invoice = order.Invoice();
 
             // assert
-            actual.Should().Be("Mini Pizza with Crispy Ham\n$10.35");
+            Privateer privateer = new Privateer();
+            List<LineItem> lineItems = privateer.Field<List<LineItem>>(invoice, "_lineItems");
+            lineItems.Should().HaveCount(1);
+            privateer.Field<string>(lineItems[0], "_description").Should().Be("Mini Pizza with Crispy Ham");
+            privateer.Field<string>(lineItems[0], "_price").Should().Be("$10.35");
         }
 
         [TestMethod, TestCategory("Unit")]

@@ -12,7 +12,6 @@ namespace PizzaShop.Controllers.Request
     {
         private List<IProduct> _products;
         private readonly IOrderStrategy _orderStrategy;
-
         public string Location { get; set; }
         
         public ProductRequest[] Products { get; set; }
@@ -27,16 +26,16 @@ namespace PizzaShop.Controllers.Request
             _orderStrategy = orderStrategy;
         }
 
-        // ReSharper disable once InconsistentNaming
-        public string Invoice()
+        public Invoice Invoice()
         {
             ILocation domainLocation = new LocationMap(Enum.Parse<LocationName>(Location)).DomainLocation();
+
             foreach (ProductRequest product in Products)
             {
                 _products = _orderStrategy.Add(product, domainLocation);
             }
 
-            return $"{string.Join("\n\n", _products.Select(p => p.Description() + "\n" + domainLocation.LocalizedPrice(p.Price())))}";
+            return new Invoice(_products.Select(p => new LineItem(p.Description(), domainLocation.LocalizedPrice(p.Price()))).ToList());
         }
     }
 }
