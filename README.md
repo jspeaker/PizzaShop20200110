@@ -1,5 +1,6 @@
 # PizzaShop20200110
 A modification of Shayne Vacher's Pizza Shop coding exercise by Quinn Gil.
+Each of the following requirement sections should be implemented in iterations.
 
 ====INITIAL REQUIREMENTS====
 We are creating an ordering system for a Pizza Shop. A small operation, they don't need much.
